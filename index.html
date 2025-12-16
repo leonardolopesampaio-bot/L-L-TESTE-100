@@ -5,14 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Música e Fotos</title>
     <style>
+        body {
+            font-family: 'Cursive', sans-serif;
+            background: linear-gradient(to right, #fcb6d0, #fae0e6); /* Gradiente suave */
+            text-align: center;
+            color: #6d3f6c; /* Cor roxa suave para um toque romântico */
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        #startBtn {
+            background-color: #ff7b91; /* Botão com cor suave */
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #startBtn:hover {
+            background-color: #f2747e;
+        }
+
         .photo {
             width: 100%;
+            max-width: 500px;
             height: auto;
             display: none;
+            margin-top: 20px;
+            border-radius: 15px; /* Bordas arredondadas para um visual mais suave */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        audio {
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
+
+<h1>Comece a Sua História de Amor</h1>
 
 <!-- Link para iniciar -->
 <a href="#" id="startBtn">Clique para Iniciar</a>
@@ -33,3 +77,29 @@
 
 <script>
     // Selecionando o botão, player de áudio e as imagens
+    const startBtn = document.getElementById("startBtn");
+    const audioPlayer = document.getElementById("audioPlayer");
+    const photos = document.querySelectorAll(".photo");
+
+    // Função para iniciar a música e mostrar fotos
+    startBtn.addEventListener("click", function() {
+        // Iniciar a música a partir do segundo 23
+        audioPlayer.currentTime = 23;
+        audioPlayer.play();
+
+        // Exibir as fotos uma por uma a cada 2 segundos
+        let photoIndex = 0;
+        const photoInterval = setInterval(function() {
+            if (photoIndex < photos.length) {
+                photos[photoIndex].style.display = "block";
+                photoIndex++;
+            } else {
+                clearInterval(photoInterval); // Limpar intervalo quando todas as fotos forem mostradas
+            }
+        }, 2000); // Exibe uma foto a cada 2 segundos
+    });
+</script>
+
+</body>
+</html>
+
