@@ -22,10 +22,11 @@
         h1 {
             font-size: 2em;
             margin-bottom: 20px;
+            color: #6d3f6c;
         }
 
         #startBtn {
-            background-color: #ff7b91; /* Botão com cor suave */
+            background-color: #ff7b91; /* Cor do botão */
             color: white;
             padding: 15px 30px;
             font-size: 1.2em;
@@ -33,6 +34,8 @@
             border: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            z-index: 9999; /* Garante que o botão não será coberto por outros elementos */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         #startBtn:hover {
@@ -62,6 +65,65 @@
 </head>
 <body>
 
-<h1>Comece a Sua História d
+<h1>Comece a Sua História de Amor</h1>
+
+<!-- Link para iniciar -->
+<a href="#" id="startBtn">Clique para Iniciar</a>
+
+<!-- Imagens das fotos (serão exibidas em sequência) -->
+<img src="foto1.jpg" class="photo" id="photo1">
+<img src="foto2.jpg" class="photo" id="photo2">
+<img src="foto3.jpg" class="photo" id="photo3">
+<img src="foto4.jpg" class="photo" id="photo4">
+<img src="foto5.jpg" class="photo" id="photo5">
+<img src="foto6.jpg" class="photo" id="photo6">
+
+<!-- Player de música -->
+<audio id="audioPlayer">
+    <source src="sua-musica.mp3" type="audio/mp3">
+    Seu navegador não suporta o elemento de áudio.
+</audio>
+
+<script>
+    // Selecionando o botão, player de áudio e as imagens
+    const startBtn = document.getElementById("startBtn");
+    const audioPlayer = document.getElementById("audioPlayer");
+    const photos = document.querySelectorAll(".photo");
+
+    // Função para iniciar a música e mostrar fotos com transições suaves
+    startBtn.addEventListener("click", function() {
+        // Iniciar a música a partir do segundo 23
+        audioPlayer.currentTime = 23;
+        audioPlayer.play();
+
+        let photoIndex = 0;
+
+        // Função para mostrar fotos com transições suaves
+        function showPhoto() {
+            if (photoIndex < photos.length) {
+                photos[photoIndex].classList.add("fade-in");
+                photoIndex++;
+            }
+        }
+
+        // Exibir a primeira foto imediatamente
+        photos[photoIndex].classList.add("fade-in");
+        photoIndex++;
+
+        // Exibir as próximas fotos a cada 5 segundos
+        const photoInterval = setInterval(function() {
+            if (photoIndex < photos.length) {
+                photos[photoIndex - 1].classList.remove("fade-in"); // Remove a classe fade-in da foto anterior
+                showPhoto();
+            } else {
+                clearInterval(photoInterval); // Limpar intervalo quando todas as fotos forem mostradas
+            }
+        }, 5000); // Exibe uma foto a cada 5 segundos
+    });
+</script>
+
+</body>
+</html>
+
 
 
