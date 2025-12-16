@@ -47,6 +47,12 @@
             margin-top: 20px;
             border-radius: 15px; /* Bordas arredondadas para um visual mais suave */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 1s ease-in-out; /* Transição suave */
+        }
+
+        .fade-in {
+            opacity: 1; /* Exibe a foto */
         }
 
         audio {
@@ -56,50 +62,6 @@
 </head>
 <body>
 
-<h1>Comece a Sua História de Amor</h1>
+<h1>Comece a Sua História d
 
-<!-- Link para iniciar -->
-<a href="#" id="startBtn">Clique para Iniciar</a>
-
-<!-- Imagens das fotos (serão exibidas em sequência) -->
-<img src="foto1.jpg" class="photo" id="photo1">
-<img src="foto2.jpg" class="photo" id="photo2">
-<img src="foto3.jpg" class="photo" id="photo3">
-<img src="foto4.jpg" class="photo" id="photo4">
-<img src="foto5.jpg" class="photo" id="photo5">
-<img src="foto6.jpg" class="photo" id="photo6">
-
-<!-- Player de música -->
-<audio id="audioPlayer">
-    <source src="sua-musica.mp3" type="audio/mp3">
-    Seu navegador não suporta o elemento de áudio.
-</audio>
-
-<script>
-    // Selecionando o botão, player de áudio e as imagens
-    const startBtn = document.getElementById("startBtn");
-    const audioPlayer = document.getElementById("audioPlayer");
-    const photos = document.querySelectorAll(".photo");
-
-    // Função para iniciar a música e mostrar fotos
-    startBtn.addEventListener("click", function() {
-        // Iniciar a música a partir do segundo 23
-        audioPlayer.currentTime = 23;
-        audioPlayer.play();
-
-        // Exibir as fotos uma por uma a cada 2 segundos
-        let photoIndex = 0;
-        const photoInterval = setInterval(function() {
-            if (photoIndex < photos.length) {
-                photos[photoIndex].style.display = "block";
-                photoIndex++;
-            } else {
-                clearInterval(photoInterval); // Limpar intervalo quando todas as fotos forem mostradas
-            }
-        }, 2000); // Exibe uma foto a cada 2 segundos
-    });
-</script>
-
-</body>
-</html>
 
