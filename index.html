@@ -56,6 +56,7 @@
 
         .fade-in {
             opacity: 1; /* Exibe a foto */
+            display: block;
         }
 
         audio {
@@ -107,8 +108,7 @@
         }
 
         // Exibir a primeira foto imediatamente
-        photos[photoIndex].classList.add("fade-in");
-        photoIndex++;
+        showPhoto();
 
         // Exibir as próximas fotos a cada 5 segundos
         const photoInterval = setInterval(function() {
@@ -124,6 +124,7 @@
 
 </body>
 </html>
+
 
 
 
